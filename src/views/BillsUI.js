@@ -16,19 +16,20 @@ const row = (bill) => {
         ${Actions(bill.fileUrl)}
       </td>
     </tr>
-    `)
-  }
+  `)
+}
 
 const rows = (data) => {
   let dataSort = [];
     if (data){
+      //Bills.js L42
         dataSort = data.sort(function(a, b) {
             let dateA = new Date(a.date), dateB = new Date(b.date);
             return dateB - dateA;
         });
     }
 
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  return (data && data.length) ? dataSort.map(bill => row(bill)).join("") : ""
 }
 
 export default ({ data: bills, loading, error }) => {
